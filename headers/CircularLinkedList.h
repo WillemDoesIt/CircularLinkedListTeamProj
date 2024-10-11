@@ -138,11 +138,27 @@ namespace CS273 {
 		/// clear (empties the list!)
 		/// insert (inserts before an element using an iterator to indicate where)
 		/// erase (opposite of insert!)
+
 		/// push_back (inserts at the end)
-		/// pop_back (removes from the end) <== TODO You implement this
-		/// push_front (inserts at the beginning) <== TODO You implement this
-		/// pop_front (removes from the beginning) <== TODO You implement this
-		/// 
+		void push_back() {
+			//TODO
+		}
+		
+		/// pop_back (removes from the end)
+		void pop_back() {
+			//TODO
+		}
+		
+		/// push_front (inserts at the beginning)
+		void push_front() {
+			//TODO
+		}
+		
+		/// pop_front (removes from the beginning)
+		void pop_front() {
+			//TODO
+		}
+
 		
 		T& front() {
 			if (num_items == 0)
@@ -325,3 +341,4 @@ namespace CS273 {
 	};
 };
 #endif
+#pragma endregion
