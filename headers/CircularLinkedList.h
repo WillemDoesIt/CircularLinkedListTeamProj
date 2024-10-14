@@ -140,23 +140,42 @@ namespace CS273 {
 		/// erase (opposite of insert!)
 
 		/// push_back (inserts at the end)
-		void push_back() {
-			//TODO
+		void push_back(T item) {
+			//TODO:create node
+				//conating item, and points to head and points back to tail
+				//TODO:get first item
+
+			//TODO:set node to tail
+
+			//TODO:make previous tail point to item
+			//TODO:make head point back to item
+			
 		}
 		
 		/// pop_back (removes from the end)
 		void pop_back() {
-			//TODO
+			//TODO:set node before tail to tail and point it to first element.
+			//TODO:make head point back to new tail
+			//TODO:dealocate the previous tail
 		}
 		
 		/// push_front (inserts at the beginning)
-		void push_front() {
-			//TODO
+		void push_front(T item) {
+			//TODO:create node
+				//containg item, and points to head and points back to tail
+				//TODO:get first item
+
+			//TODO:set node to head
+
+			//TODO:make previous head piont back to item
+			//TODO:make tail point to item
 		}
 		
 		/// pop_front (removes from the beginning)
 		void pop_front() {
-			//TODO
+			//TODO:get second node to point back to tail
+			//TODO:get tail to point to second node
+			//TODO:dealocate node
 		}
 
 		
