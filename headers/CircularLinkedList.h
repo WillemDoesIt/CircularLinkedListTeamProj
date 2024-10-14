@@ -140,16 +140,24 @@ namespace CS273 {
 		/// erase (opposite of insert!)
 
 		/// push_back (inserts at the end)
+
 		void push_back(T item) {
-			//TODO:create node
-				//conating item, and points to head and points back to tail
-				//TODO:get first item
+			node* elem = new node(item);
 
-			//TODO:set node to tail
-
-			//TODO:make previous tail point to item
-			//TODO:make head point back to item
-			
+			if (num_items == 0) {
+				head = elem;
+				tail = elem;
+				head->next = head;
+				head->prev = tail;
+			}else {
+				node* prev_tail = tail;
+				tail = elem;
+				prev_tail->next = tail;
+				tail->prev = prev_tail;
+				tail->next = head;
+				head->prev = tail;
+			}
+			num_items++;
 		}
 		
 		/// pop_back (removes from the end)
@@ -163,7 +171,6 @@ namespace CS273 {
 		void push_front(T item) {
 			//TODO:create node
 				//containg item, and points to head and points back to tail
-				//TODO:get first item
 
 			//TODO:set node to head
 
