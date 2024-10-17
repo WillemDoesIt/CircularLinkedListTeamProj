@@ -138,53 +138,11 @@ namespace CS273 {
 		/// clear (empties the list!)
 		/// insert (inserts before an element using an iterator to indicate where)
 		/// erase (opposite of insert!)
-
 		/// push_back (inserts at the end)
-
-		void push_back(T item) {
-			node* elem = new node(item);
-
-			if (num_items == 0) {
-				head = elem;
-				tail = elem;
-				head->next = head;
-				head->prev = tail;
-			}else {
-				node* prev_tail = tail;
-				tail = elem;
-				prev_tail->next = tail;
-				tail->prev = prev_tail;
-				tail->next = head;
-				head->prev = tail;
-			}
-			num_items++;
-		}
-		
-		/// pop_back (removes from the end)
-		void pop_back() {
-			//TODO:set node before tail to tail and point it to first element.
-			//TODO:make head point back to new tail
-			//TODO:dealocate the previous tail
-		}
-		
-		/// push_front (inserts at the beginning)
-		void push_front(T item) {
-			//TODO:create node
-				//containg item, and points to head and points back to tail
-
-			//TODO:set node to head
-
-			//TODO:make previous head piont back to item
-			//TODO:make tail point to item
-		}
-		
-		/// pop_front (removes from the beginning)
-		void pop_front() {
-			//TODO:get second node to point back to tail
-			//TODO:get tail to point to second node
-			//TODO:dealocate node
-		}
-
+		/// pop_back (removes from the end) <== TODO You implement this
+		/// push_front (inserts at the beginning) <== TODO You implement this
+		/// pop_front (removes from the beginning) <== TODO You implement this
+		/// 
 		
 		T& front() {
 			if (num_items == 0)
@@ -323,16 +281,40 @@ namespace CS273 {
 			tail = elem;
 		}
 
-		///TODO
 		/// <summary>
 		/// Removes an element from the "back" of the list, causing the
 		/// previous element before it to point to the beginning.
 		/// </summary>
-		//void pop_back() {
-			//TODO. Right now is a stub
-		//}
+		void pop_back() {
+			//TODO:set node before tail to tail and point it to first element.
+			//TODO:make head point back to new tail
+			//TODO:dealocate the previous tail
+		}
 
-		//TODO: Rest of the functionality, see comments above...
+		/// <summary>
+		/// Adds an element to the "front" of the list, causing the
+		/// next element after it to point to the end.
+		/// </summary>
+		void push_front(const T& value) {
+			//TODO:create node
+				//containg item, and points to head and points back to tail
+				//TODO:get first item
+
+			//TODO:set node to head
+
+			//TODO:make previous head piont back to item
+			//TODO:make tail point to item
+		}
+
+		/// <summary>
+		/// Removes an element from the "front" of the list, causing the
+		/// next element after it to point to the end.
+		/// </summary>
+		void pop_front() {
+			//TODO:get second node to point back to tail
+			//TODO:get tail to point to second node
+			//TODO:dealocate node
+		}
 
 #pragma endregion
 #pragma region RuleOfThree
