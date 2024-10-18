@@ -286,9 +286,12 @@ namespace CS273 {
 		/// previous element before it to point to the beginning.
 		/// </summary>
 		void pop_back() {
-			//TODO:set node before tail to tail and point it to first element.
-			//TODO:make head point back to new tail
-			//TODO:dealocate the previous tail
+			// TODO: handle for empty list
+			// TODO: handle for list of 1 item
+			// TODO: default process:
+				// set tail to tail prev
+				// dealocate old tail
+				// make head and new tail connect
 		}
 
 		/// <summary>
@@ -296,14 +299,12 @@ namespace CS273 {
 		/// next element after it to point to the end.
 		/// </summary>
 		void push_front(const T& value) {
-			//TODO:create node
-				//containg item, and points to head and points back to tail
-				//TODO:get first item
-
-			//TODO:set node to head
-
-			//TODO:make previous head piont back to item
-			//TODO:make tail point to item
+			// TODO: handle for empty list
+			// TODO: handle for list of 1 item
+			// TODO: default process:
+				// make a node with value next to head, prev to tail
+				// set new node to head
+				// make tail and old header point to new header
 		}
 
 		/// <summary>
@@ -311,9 +312,12 @@ namespace CS273 {
 		/// next element after it to point to the end.
 		/// </summary>
 		void pop_front() {
-			//TODO:get second node to point back to tail
-			//TODO:get tail to point to second node
-			//TODO:dealocate node
+			// TODO: handle for empty list
+			// TODO: handle for list of 1 item
+			// TODO: default process:
+				// set head to head next
+				// dealocate old head
+				// make new head and tail connect
 		}
 
 #pragma endregion
