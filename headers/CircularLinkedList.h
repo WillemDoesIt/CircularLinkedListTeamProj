@@ -89,12 +89,12 @@ namespace CS273 {
 			///
 			/// Overloaded operators for advancing and for moving backwarts
 			/// 
-			iterator& operator++() {
-				//TODO
-			}
-			iterator& operator--() {
-				//TODO
-			}
+			// iterator& operator++() {
+			// 	//TODO
+			// }
+			// iterator& operator--() {
+			// 	//TODO
+			// }
 
 			///
 			/// Overloaded dereferencing operator for treating an iterator like
@@ -299,10 +299,14 @@ namespace CS273 {
 				return;			// return so it doesn't continue to default process
 			}
 
-			// TODO: default process:
-				// set tail to tail prev
-				// dealocate old tail
-				// make head and new tail connect
+			node* byebye = tail;   // We need to deallocate tail, but first it must be reasigned
+			tail = tail->prev;     // poping off the last item makes the previous to last the new last item
+			delete byebye;         // Now safely deletes the old tail
+
+			// finish the circle
+			tail->next = head;
+			head->prev = tail;
+
 		}
 
 
