@@ -317,21 +317,19 @@ namespace CS273 {
 		/// </summary>
 		void push_front(const T& value) {
 			node* elem;
-			// TODO: handle for empty list
-			if (num_items == 0) {
+			if (num_items > 0) {
+				// pointing to after handles all other prev and nexts through the node constructor
+				elem = new node(value, head);
+			}
+			else {
+				// in case of empty list
 				elem = new node(value);
 				elem->next = elem;
 				elem->prev = elem;
 				tail = elem;
 			}
-
-			// TODO: handle for list of 1 item
-			// TODO: default process:
-				// make a node with value next to head, prev to tail
-				// set new node to head
-				// make tail and old header point to new header
-			num_items++;
-			head = elem;
+			num_items++; // increment for push
+			head = elem; // set head (otherwise it would just act as an inbetween of head and tail)
 		}
 
 		/// <summary>
