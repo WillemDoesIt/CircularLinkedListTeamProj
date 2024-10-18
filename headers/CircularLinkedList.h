@@ -295,18 +295,19 @@ namespace CS273 {
 				delete head; 	// deallocate
 				head = nullptr;	// null is a sin against god, but its the default for empty lists
 				tail = nullptr;
-				num_items--;	// lower the count
+				num_items--;	// decrement the count
 				return;			// return so it doesn't continue to default process
 			}
 
 			node* byebye = tail;   // We need to deallocate tail, but first it must be reasigned
 			tail = tail->prev;     // poping off the last item makes the previous to last the new last item
-			delete byebye;         // Now safely deletes the old tail
 
 			// finish the circle
 			tail->next = head;
 			head->prev = tail;
 
+			delete byebye;  // Now safely deletes the old tail
+			num_items--;	// decrement the count
 		}
 
 
@@ -315,12 +316,22 @@ namespace CS273 {
 		/// next element after it to point to the end.
 		/// </summary>
 		void push_front(const T& value) {
+			node* elem;
 			// TODO: handle for empty list
+			if (num_items == 0) {
+				elem = new node(value);
+				elem->next = elem;
+				elem->prev = elem;
+				tail = elem;
+			}
+
 			// TODO: handle for list of 1 item
 			// TODO: default process:
 				// make a node with value next to head, prev to tail
 				// set new node to head
 				// make tail and old header point to new header
+			num_items++;
+			head = elem;
 		}
 
 		/// <summary>
