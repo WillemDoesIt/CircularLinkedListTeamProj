@@ -337,12 +337,27 @@ namespace CS273 {
 		/// next element after it to point to the end.
 		/// </summary>
 		void pop_front() {
-			// TODO: handle for empty list
+			if (num_items == 0)
+				return;
+
 			// TODO: handle for list of 1 item
-			// TODO: default process:
-				// set head to head next
-				// dealocate old head
-				// make new head and tail connect
+			if (num_items == 1) {
+				delete head; 	// deallocate
+				head = nullptr;	// null is a sin against god, but its the default for empty lists
+				tail = nullptr;
+				num_items--;	// decrement the count
+				return;			// return so it doesn't continue to default process
+			}
+
+			node* byebye = head;   // We need to deallocate tail, but first it must be reasigned
+			head = head->next;     // poping off the last item makes the previous to last the new last item
+
+			// finish the circle
+			head->prev = tail;
+			tail->next = head;
+
+			delete byebye;  // Now safely deletes the old tail
+			num_items--;	// decrement the count
 		}
 
 #pragma endregion
