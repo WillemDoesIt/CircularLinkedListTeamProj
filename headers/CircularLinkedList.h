@@ -286,13 +286,25 @@ namespace CS273 {
 		/// previous element before it to point to the beginning.
 		/// </summary>
 		void pop_back() {
-			// TODO: handle for empty list
-			// TODO: handle for list of 1 item
+			// do nothing if empty
+			if (num_items == 0)
+				return;
+
+			// if one item, empty the whole list
+			if (num_items == 1) {
+				delete head; 	// deallocate
+				head = nullptr;	// null is a sin against god, but its the default for empty lists
+				tail = nullptr;
+				num_items--;	// lower the count
+				return;			// return so it doesn't continue to default process
+			}
+
 			// TODO: default process:
 				// set tail to tail prev
 				// dealocate old tail
 				// make head and new tail connect
 		}
+
 
 		/// <summary>
 		/// Adds an element to the "front" of the list, causing the
