@@ -139,9 +139,9 @@ namespace CS273 {
 		/// insert (inserts before an element using an iterator to indicate where)
 		/// erase (opposite of insert!)
 		/// push_back (inserts at the end)
-		/// pop_back (removes from the end) <== TODO You implement this
-		/// push_front (inserts at the beginning) <== TODO You implement this
-		/// pop_front (removes from the beginning) <== TODO You implement this
+		/// pop_back (removes from the end)
+		/// push_front (inserts at the beginning)
+		/// pop_front (removes from the beginning)
 		/// 
 		
 		T& front() {
@@ -340,7 +340,7 @@ namespace CS273 {
 			if (num_items == 0)
 				return;
 
-			// TODO: handle for list of 1 item
+			// if one item, empty the whole list
 			if (num_items == 1) {
 				delete head; 	// deallocate
 				head = nullptr;	// null is a sin against god, but its the default for empty lists
