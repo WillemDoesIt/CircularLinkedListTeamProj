@@ -8,9 +8,6 @@ int main(int argc, char **argv) {
     return RUN_ALL_TESTS();
 }
 
-// TODO: once you have the iterator setup use it to prove lists have circularity (both directions)
-// TODO: copy constructor tests
-
 TEST(Constructor, Copy) {
     CS273::CircLinkedList<std::string> myList;
 
@@ -23,6 +20,30 @@ TEST(Constructor, Copy) {
     EXPECT_EQ(myList2.size(), 3);
 }
 
+TEST(Iterator, OneItem) {
+    CS273::CircLinkedList<std::string> myList;
+    myList.push_back("item1");
+    CS273::CircLinkedList<std::string>::iterator it = myList.begin();
+    EXPECT_EQ(*it, "item1");
+    ++it;
+    EXPECT_EQ(*it, "item1"); // doesn't advance
+}
+
+TEST(Iterator, ThreeItems) {
+    CS273::CircLinkedList<std::string> myList;
+    myList.push_back("item1");
+    myList.push_back("item2");
+    myList.push_back("item3");
+    CS273::CircLinkedList<std::string>::iterator it = myList.begin();
+    EXPECT_EQ(*it, "item1");
+    ++it;
+    EXPECT_EQ(*it, "item2");
+    ++it;
+    EXPECT_EQ(*it, "item3");
+    ++it;
+    EXPECT_EQ(*it, "item1"); // returns back to the start
+}
+
 TEST(PopBack, ThreeItems) {
     CS273::CircLinkedList<std::string> myList;
 	myList.push_back("item1");
@@ -30,8 +51,13 @@ TEST(PopBack, ThreeItems) {
     myList.push_back("item3");
     myList.pop_back();
     EXPECT_EQ(myList.size(), 2);
-    EXPECT_EQ(myList.front(), "item1");
-    EXPECT_EQ(myList.back(), "item2");
+    // iterate through to check values
+    CS273::CircLinkedList<std::string>::iterator it = myList.begin();
+	EXPECT_EQ(*it, "item1");
+    ++it;
+    EXPECT_EQ(*it, "item2");
+    ++it;
+    EXPECT_EQ(*it, "item1"); // returns back to the start
 }
 
 TEST(PopBack, OneItem) {
