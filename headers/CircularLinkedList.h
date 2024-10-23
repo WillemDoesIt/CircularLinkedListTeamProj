@@ -377,11 +377,9 @@ namespace CS273 {
 
 #pragma endregion
 #pragma region RuleOfThree
-		///TODO:
-		/// Recall: the Rule of Three requires that we define a destructor,
-		/// a copy constructor, and an overloaded assignment operator!
-		/// 
-		/// First, the destructor
+		/// <summary>
+		/// The destructor is responsible for destroying the whole list
+		/// </summary>
 		virtual ~CircLinkedList<T>() {
 			//March through the list destroying the whole thing!
 			node* byebye = head;
@@ -392,19 +390,21 @@ namespace CS273 {
 				num_items--;
 			}
 		}
-		///TODO
+
 		/// <summary>
 		/// The copy constructor makes a deep copy
 		/// </summary>
-		///CircLinkedList<T>(const CircLinkedList<T>& alt) :
-		///	head(nullptr), tail(nullptr), num_items(0) {
-		///	
-		///	node* n = alt.head;
-		///	int items_copied = 0;
-		///	while (items_copied < alt.num_items) {
-				//TODO
-		///	}
-		///}
+		CircLinkedList<T>(const CircLinkedList<T>& alt) :
+			head(nullptr), tail(nullptr), num_items(0) {
+			
+			node* n = alt.head;
+			int items_copied = 0;
+			while (items_copied < alt.num_items) {
+				push_back(n->data);
+				n = n->next;
+				items_copied++;
+			}
+		}
 	};
 };
 #endif
