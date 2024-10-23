@@ -87,13 +87,15 @@ namespace CS273 {
 				parent(parent), cur(cur) {}
 
 			///
-			/// Overloaded operators for advancing and for moving backwarts
+			/// Overloaded operators for advancing and for moving backwards
 			/// 
 			iterator& operator++() {
 				//TODO
+				
 			}
 			iterator& operator--() {
 				//TODO
+				
 			}
 
 			///
