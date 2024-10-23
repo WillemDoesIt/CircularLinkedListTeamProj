@@ -9,6 +9,19 @@ int main(int argc, char **argv) {
 }
 
 // TODO: once you have the iterator setup use it to prove lists have circularity (both directions)
+// TODO: copy constructor tests
+
+TEST(Constructor, Copy) {
+    CS273::CircLinkedList<std::string> myList;
+
+    myList.push_back("item1");
+    myList.push_back("item2");
+    myList.push_back("item3");
+    CS273::CircLinkedList<std::string> myList2(myList);
+
+    EXPECT_EQ(myList.size(), 3);
+    EXPECT_EQ(myList2.size(), 3);
+}
 
 TEST(PopBack, ThreeItems) {
     CS273::CircLinkedList<std::string> myList;
