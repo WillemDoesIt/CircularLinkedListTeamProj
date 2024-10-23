@@ -154,9 +154,9 @@ namespace CS273 {
 		/// insert (inserts before an element using an iterator to indicate where)
 		/// erase (opposite of insert!)
 		/// push_back (inserts at the end)
-		/// pop_back (removes from the end) <== TODO You implement this
-		/// push_front (inserts at the beginning) <== TODO You implement this
-		/// pop_front (removes from the beginning) <== TODO You implement this
+		/// pop_back (removes from the end)
+		/// push_front (inserts at the beginning)
+		/// pop_front (removes from the beginning)
 		/// 
 		
 		T& front() {
@@ -296,16 +296,84 @@ namespace CS273 {
 			tail = elem;
 		}
 
-		///TODO
 		/// <summary>
 		/// Removes an element from the "back" of the list, causing the
 		/// previous element before it to point to the beginning.
 		/// </summary>
-		//void pop_back() {
-			//TODO. Right now is a stub
-		//}
+		void pop_back() {
+			// do nothing if empty
+			if (num_items == 0)
+				return;
 
-		//TODO: Rest of the functionality, see comments above...
+			// if one item, empty the whole list
+			if (num_items == 1) {
+				delete head; 	// deallocate
+				head = nullptr;	// null is a sin against god, but its the default for empty lists
+				tail = nullptr;
+				num_items--;	// decrement the count
+				return;			// return so it doesn't continue to default process
+			}
+
+			node* byebye = tail;   // We need to deallocate tail, but first it must be reasigned
+			tail = tail->prev;     // poping off the last item makes the previous to last the new last item
+
+			// finish the circle
+			tail->next = head;
+			head->prev = tail;
+
+			delete byebye;  // Now safely deletes the old tail
+			num_items--;	// decrement the count
+		}
+
+
+		/// <summary>
+		/// Adds an element to the "front" of the list, causing the
+		/// next element after it to point to the end.
+		/// </summary>
+		void push_front(const T& value) {
+			node* elem;
+			if (num_items > 0) {
+				// pointing to after handles all other prev and nexts through the node constructor
+				elem = new node(value, head);
+			}
+			else {
+				// in case of empty list
+				elem = new node(value);
+				elem->next = elem;
+				elem->prev = elem;
+				tail = elem;
+			}
+			num_items++; // increment for push
+			head = elem; // set head (otherwise it would just act as an inbetween of head and tail)
+		}
+
+		/// <summary>
+		/// Removes an element from the "front" of the list, causing the
+		/// next element after it to point to the end.
+		/// </summary>
+		void pop_front() {
+			if (num_items == 0)
+				return;
+
+			// if one item, empty the whole list
+			if (num_items == 1) {
+				delete head; 	// deallocate
+				head = nullptr;	// null is a sin against god, but its the default for empty lists
+				tail = nullptr;
+				num_items--;	// decrement the count
+				return;			// return so it doesn't continue to default process
+			}
+
+			node* byebye = head;   // We need to deallocate tail, but first it must be reasigned
+			head = head->next;     // poping off the last item makes the previous to last the new last item
+
+			// finish the circle
+			head->prev = tail;
+			tail->next = head;
+
+			delete byebye;  // Now safely deletes the old tail
+			num_items--;	// decrement the count
+		}
 
 #pragma endregion
 #pragma region RuleOfThree
@@ -340,3 +408,4 @@ namespace CS273 {
 	};
 };
 #endif
+#pragma endregion
