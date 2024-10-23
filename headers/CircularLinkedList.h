@@ -7,8 +7,7 @@
 *	and sequential containers.
 * 
 * Author: Matthew Bell and CS273
-* Co-authors: <TODO: PUT YOUR NAME HERE. YOU MAY WORK IN GROUPS OF TWO
-				IFF you come to Prof. Bell for advice.>
+* Co-authors: <Willem Van Zwol, Josh Everest>
 * 
 * Miscelleneous credits:
 * This example is loosely based on an earlier doubly linked list (non-circular)
