@@ -89,13 +89,26 @@ namespace CS273 {
 			///
 			/// Overloaded operators for advancing and for moving backwards
 			/// 
+			///
 			iterator& operator++() {
-				//TODO
-				
+			if (cur == parent->tail) { //case for when the back of the list has been reached
+				cur = parent->head; // goes back to beginning
+			}
+			else {
+				//makes current item the next item
+				cur = cur->next;
+			}
+			return *this;
 			}
 			iterator& operator--() {
-				//TODO
-				
+			if (cur == parent->head) { //case for when front of list is reached
+				cur = parent->tail; //goes to the end
+			}
+			else {
+				//makes current item the previous item
+				cur = cur->prev;
+			}
+			return *this;
 			}
 
 			///
